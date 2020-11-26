@@ -44,7 +44,16 @@ namespace boostrap_DotnetCore
                             else
                                 negativeNumbers.Append(output);
                         else
+                            if (output > 1000)
+                        {
+                            continue;
+                        }
+
+                        else
+                        {
                             result += output;
+                        }
+
                     else
                         return 0;
                 }
