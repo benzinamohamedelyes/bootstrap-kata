@@ -1,0 +1,10 @@
+language: csharp
+services:
+  - docker
+mono: none
+dotnet: 3.1
+solution: ./boostrap-DotnetCore/boostrap-DotnetCore.sln
+script:
+  - dotnet restore boostrap-DotnetCore
+  - dotnet build -c release boostrap-DotnetCore
+  - dotnet test ./BootstrapTests/BootstrapTests.csproj
