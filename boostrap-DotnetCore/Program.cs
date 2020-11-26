@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace boostrap_DotnetCore
 {
@@ -15,7 +16,7 @@ namespace boostrap_DotnetCore
             string[] intTab = null;
             if (from != -1 && to != -1)
             {
-                from = from + 2;
+                from += "//".Length;
                 string customDelimiter = StringNumber.Substring(from, to - from);
                 if (customDelimiter.Length == 1)
                 {
@@ -33,14 +34,24 @@ namespace boostrap_DotnetCore
                 return 0;
             else
             {
+                StringBuilder negativeNumbers = new StringBuilder();
                 foreach (var element in intTab)
                 {
                     if (int.TryParse(element, out int output))
-                        result = result + output;
+                        if (output < 0)
+                            if (negativeNumbers.Length > 0)
+                                negativeNumbers.Append("," + output);
+                            else
+                                negativeNumbers.Append(output);
+                        else
+                            result += output;
                     else
                         return 0;
                 }
-                return result;
+                if (negativeNumbers.Length > 0)
+                    throw new InvalidOperationException("negatives not allowed: " + negativeNumbers.ToString());
+                else
+                    return result;
             }
 
         }
