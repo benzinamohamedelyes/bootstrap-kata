@@ -10,10 +10,22 @@ namespace boostrap_DotnetCore
         }
         public static int Add(string StringNumber)
         {
-            if ( !string.IsNullOrEmpty(StringNumber) && int.TryParse(StringNumber, out int output))
-                return output;
-            else
+            var intTab = StringNumber.Split(",");
+            int result = 0;
+            if (string.IsNullOrEmpty(StringNumber))
                 return 0;
+            else
+            {
+                foreach(var element in intTab)
+                {
+                    if (int.TryParse(element, out int output))
+                        result = result + output;
+                    else
+                        return 0;
+                }
+                return result;
+            }
+            
         }
     }
 }
