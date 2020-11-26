@@ -10,7 +10,10 @@ namespace boostrap_DotnetCore
         }
         public static int Add(string StringNumber)
         {
-            throw new NotImplementedException();
+            if ( !string.IsNullOrEmpty(StringNumber) && int.TryParse(StringNumber, out int output))
+                return output;
+            else
+                return 0;
         }
     }
 }

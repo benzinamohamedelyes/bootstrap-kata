@@ -14,5 +14,12 @@ namespace BootstrapTests
             var result = Program.Add("");
             result.Should().Be(0);
         }
+        [Fact]
+        public void AddShouldReturnSameNumber()
+        {
+            string entry = "1";
+            var result = Program.Add(entry);
+            result.Should().Be(1);
+        }
     }
 }
