@@ -43,5 +43,16 @@ namespace BootstrapTests
             result = Program.Add(entry);
             result.Should().Be(12);
         }
+        [Fact]
+        public void AddShouldReturnTheAdditionOfEntryNumbersSeparatedByDefinedDelimiters()
+        {
+            string entry = "//;\n1;2";
+            var result = Program.Add(entry);
+            result.Should().Be(3);
+
+            entry = "//;\n1\n2,4,5";
+            result = Program.Add(entry);
+            result.Should().Be(12);
+        }
     }
 }
