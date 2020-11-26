@@ -10,7 +10,8 @@ namespace boostrap_DotnetCore
         }
         public static int Add(string StringNumber)
         {
-            var intTab = StringNumber.Split(",");
+            var intTab = StringNumber.Split(new Char[] { ',', '\n' },
+                                 StringSplitOptions.RemoveEmptyEntries);
             int result = 0;
             if (string.IsNullOrEmpty(StringNumber))
                 return 0;
