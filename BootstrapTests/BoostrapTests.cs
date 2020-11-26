@@ -22,11 +22,26 @@ namespace BootstrapTests
             result.Should().Be(1);
         }
         [Fact]
-        public void AddShouldReturnTheAdditionOfEntryNumbers()
+        public void AddShouldReturnTheAdditionOfEntryNumbersSeparatedByCommas()
         {
             string entry = "1,2";
             var result = Program.Add(entry);
             result.Should().Be(3);
+
+            entry = "1,2,4,5";
+            result = Program.Add(entry);
+            result.Should().Be(12);
+        }
+        [Fact]
+        public void AddShouldReturnTheAdditionOfEntryNumbersSeparatedByMixedSparators()
+        {
+            string entry = "1\n2";
+            var result = Program.Add(entry);
+            result.Should().Be(3);
+
+            entry = "1\n2,4,5";
+            result = Program.Add(entry);
+            result.Should().Be(12);
         }
     }
 }
