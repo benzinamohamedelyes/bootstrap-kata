@@ -66,7 +66,17 @@ namespace BootstrapTests
             ex = Assert.Throws<InvalidOperationException>(() => Program.Add(entry));
 
             Assert.Equal("negatives not allowed: -1,-8", ex.Message);
+        }
+        [Fact]
+        public void AddShouldIgnoreBigNumbers()
+        {
+            string entry = "1,2,1001";
+            var result = Program.Add(entry);
+            result.Should().Be(3);
 
+            entry = "12,2000";
+            result = Program.Add(entry);
+            result.Should().Be(12);
         }
     }
 }
