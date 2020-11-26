@@ -21,5 +21,11 @@ namespace BootstrapTests
             var result = Program.Add(entry);
             result.Should().Be(1);
         }
+        public void AddShouldReturnTheAdditionOfEntryNumbers()
+        {
+            string entry = "1,2";
+            var result = Program.Add(entry);
+            result.Should().Be(3);
+        }
     }
 }
