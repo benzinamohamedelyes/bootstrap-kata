@@ -54,5 +54,19 @@ namespace BootstrapTests
             result = Program.Add(entry);
             result.Should().Be(12);
         }
+        [Fact]
+        public void AddShouldNotAcceptNagativeNumbers()
+        {
+            string entry = "1,4,-1";
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => Program.Add(entry));
+
+            Assert.Equal("negatives not allowed: -1", ex.Message);
+
+            entry = "1,4,-1,7,-8";
+            ex = Assert.Throws<InvalidOperationException>(() => Program.Add(entry));
+
+            Assert.Equal("negatives not allowed: -1,-8", ex.Message);
+
+        }
     }
 }
